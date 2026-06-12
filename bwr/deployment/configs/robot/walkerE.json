@@ -1,0 +1,239 @@
+{
+  "robot_name": "walkerE",
+  "adapter": "walkerE",
+  "control": {
+    "publish_hz": 30.0,
+    "reset_steps": 100,
+    "reset_duration": 2.0
+  },
+  "qos": {
+    "publisher": {
+      "reliability": "RELIABLE",
+      "history": "KEEP_LAST",
+      "depth": 10,
+      "durability": "VOLATILE"
+    },
+    "subscriber": {
+      "reliability": "RELIABLE",
+      "history": "KEEP_LAST",
+      "depth": 10,
+      "durability": "VOLATILE"
+    },
+    "hand_subscriber": {
+      "reliability": "RELIABLE",
+      "history": "KEEP_LAST",
+      "depth": 10,
+      "durability": "VOLATILE"
+    }
+  },
+  "pd_params": {
+    "head": {
+      "kp": 20.0,
+      "kd": 2.0
+    },
+    "arm": {
+      "kp": 20.0,
+      "kd": 2.0
+    }
+  },
+  "topics": {
+    "states": {
+      "head": {
+        "enabled": true,
+        "topic": "/arm/status",
+        "message_type": "bodyctrl_msgs/MotorStatusMsg"
+      },
+      "arm": {
+        "enabled": true,
+        "topic": "/arm/status",
+        "message_type": "bodyctrl_msgs/MotorStatusMsg"
+      },
+      "hand": {
+        "enabled": false,
+        "topic": null,
+        "message_type": null
+      },
+      "left_hand": {
+        "enabled": true,
+        "topic": "/inspire_hand/status/left_hand",
+        "message_type": "sensor_msgs/JointState"
+      },
+      "right_hand": {
+        "enabled": true,
+        "topic": "/inspire_hand/status/right_hand",
+        "message_type": "sensor_msgs/JointState"
+      },
+      "left_gripper": {
+        "enabled": true,
+        "topic": "/gripper/left/grip",
+        "message_type": "std_msgs/Int32"
+      },
+      "right_gripper": {
+        "enabled": true,
+        "topic": "/gripper/right/grip",
+        "message_type": "std_msgs/Int32"
+      }
+    },
+    "commands": {
+      "head": {
+        "enabled": true,
+        "topic": "/head/cmd_pos",
+        "message_type": "bodyctrl_msgs/CmdSetMotorPosition"
+      },
+      "arm": {
+        "enabled": true,
+        "topic": "/arm/cmd_pos",
+        "message_type": "bodyctrl_msgs/CmdSetMotorPosition"
+      },
+      "hand": {
+        "enabled": false,
+        "topic": null,
+        "message_type": null
+      },
+      "left_hand": {
+        "enabled": true,
+        "topic": "/inspire_hand/ctrl/left_hand",
+        "message_type": "sensor_msgs/JointState"
+      },
+      "right_hand": {
+        "enabled": true,
+        "topic": "/inspire_hand/ctrl/right_hand",
+        "message_type": "sensor_msgs/JointState"
+      },
+      "left_gripper": {
+        "enabled": true,
+        "topic": "/gripper/left/cmd",
+        "message_type": "std_msgs/Int32"
+      },
+      "right_gripper": {
+        "enabled": true,
+        "topic": "/gripper/right/cmd",
+        "message_type": "std_msgs/Int32"
+      }
+    },
+    "cameras": {
+      "CAMERA_HEAD": {
+        "enabled": true,
+        "topic": "/camera/color/image_raw",
+        "message_type": "sensor_msgs/Image"
+      },
+      "CAMERA_HAND_LEFT": {
+        "enabled": true,
+        "topic": "/hand_camera/color/left/image_raw",
+        "message_type": "sensor_msgs/Image"
+      },
+      "CAMERA_HAND_RIGHT": {
+        "enabled": true,
+        "topic": "/hand_camera/color/right/image_raw",
+        "message_type": "sensor_msgs/Image"
+      }
+    }
+  },
+  "joints": {
+    "head": {
+      "ids": [1, 2, 3],
+      "order": ["head_roll", "head_pitch", "head_yaw"],
+      "speed": 0.2,
+      "current": 8.0,
+      "stiffness": 20.0,
+      "damping": 2.0,
+      "velocity": 0.0,
+      "effort": 0.0
+    },
+    "arm": {
+      "ids": [11, 12, 13, 14, 15, 16, 17, 21, 22, 23, 24, 25, 26, 27],
+      "full_order": [
+        "left_shoulder_pitch",
+        "left_shoulder_roll",
+        "left_shoulder_yaw",
+        "left_elbow",
+        "left_wrist_yaw",
+        "left_wrist_pitch",
+        "left_wrist_roll",
+        "right_shoulder_pitch",
+        "right_shoulder_roll",
+        "right_shoulder_yaw",
+        "right_elbow",
+        "right_wrist_yaw",
+        "right_wrist_pitch",
+        "right_wrist_roll"
+      ],
+      "speed": 1.0,
+      "current": 5.0,
+      "stiffness": 20.0,
+      "damping": 2.0,
+      "velocity": 0.0,
+      "effort": 0.0
+    },
+    "left_arm": {
+      "ids": [11, 12, 13, 14, 15, 16, 17],
+      "order": [
+        "left_shoulder_pitch",
+        "left_shoulder_roll",
+        "left_shoulder_yaw",
+        "left_elbow",
+        "left_wrist_yaw",
+        "left_wrist_pitch",
+        "left_wrist_roll"
+      ],
+      "speed": 1.0,
+      "current": 5.0
+    },
+    "right_arm": {
+      "ids": [21, 22, 23, 24, 25, 26, 27],
+      "order": [
+        "right_shoulder_pitch",
+        "right_shoulder_roll",
+        "right_shoulder_yaw",
+        "right_elbow",
+        "right_wrist_yaw",
+        "right_wrist_pitch",
+        "right_wrist_roll"
+      ],
+      "speed": 1.0,
+      "current": 5.0
+    },
+    "hand": {
+      "order": ["thumb", "index", "middle", "ring", "pinky", "extra"],
+      "frame_id": "hand_command",
+      "left_hand_type": null,
+      "right_hand_type": null,
+      "velocity": 0.1,
+      "acceleration": 0.0,
+      "deceleration": 0.0,
+      "effort": 0.0
+    },
+    "left_hand": {
+      "order": ["thumb", "index", "middle", "ring", "pinky", "extra"]
+    },
+    "right_hand": {
+      "order": ["thumb", "index", "middle", "ring", "pinky", "extra"]
+    }
+  },
+  "grippers": {
+    "LEFT_GRIPPER": {
+      "side": "left",
+      "command_mode": "scalar_topic",
+      "state_source": "scalar_topic",
+      "state_topic_key": "left_gripper",
+      "command_topic_key": "left_gripper",
+      "threshold": 0.6,
+      "open_value": 0,
+      "close_value": 1,
+      "open_preset": [0, 0, 0, 0, 0, 0],
+      "close_preset": [1, 1, 1, 1, 1, 1]
+    },
+    "RIGHT_GRIPPER": {
+      "side": "right",
+      "command_mode": "scalar_topic",
+      "state_source": "scalar_topic",
+      "state_topic_key": "right_gripper",
+      "command_topic_key": "right_gripper",
+      "threshold": 0.6,
+      "open_value": 0,
+      "close_value": 1,
+      "open_preset": [0, 0, 0, 0, 0, 0],
+      "close_preset": [1, 1, 1, 1, 1, 1]
+    }
+  }
+}

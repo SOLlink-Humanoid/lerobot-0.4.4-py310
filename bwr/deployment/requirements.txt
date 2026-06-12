@@ -1,0 +1,18 @@
+# Python runtime dependencies for general_policy_deployment.
+# Install ROS2 packages and robot message packages from the robot ROS workspace,
+# not from pip.
+
+numpy>=1.24
+opencv-python>=4.9.0
+
+# Install CUDA-specific torch wheels manually first if the robot uses CUDA.
+# Example: follow https://pytorch.org/get-started/locally/ for the robot OS/CUDA.
+torch>=2.2.1
+torchvision>=0.17.0
+
+# ACTPolicy / LeRobot model loading dependencies commonly needed at runtime.
+einops>=0.8.0
+draccus>=0.10.0
+huggingface-hub[hf-transfer,cli]>=0.27.1
+safetensors>=0.4.3
+packaging>=24.2

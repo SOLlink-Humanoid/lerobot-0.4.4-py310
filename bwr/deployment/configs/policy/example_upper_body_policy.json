@@ -1,0 +1,53 @@
+{
+  "name": "example_upper_body_policy",
+  "model_path": "./pretrained_model",
+  "observation": {
+    "state_order": [
+      "LEFT_ARM",
+      "RIGHT_ARM",
+      "LEFT_GRIPPER",
+      "RIGHT_GRIPPER"
+    ],
+    "images": [
+      {
+        "component": "CAMERA_HEAD",
+        "obs_key": "camera_head",
+        "target_size": [640, 360]
+      },
+      {
+        "component": "CAMERA_HAND_RIGHT",
+        "obs_key": "camera_wrist",
+        "target_size": [320, 240]
+      }
+    ]
+  },
+  "action": {
+    "order": [
+      "LEFT_ARM",
+      "RIGHT_ARM",
+      "LEFT_GRIPPER",
+      "RIGHT_GRIPPER"
+    ],
+    "gripper_threshold": 0.6
+  },
+  "initial_pose": {
+    "LEFT_ARM": [0.0, 0.2, 0.0, 0.0, 0.0, 0.0, 0.0],
+    "RIGHT_ARM": [0.3515, -0.2388, 0.0077, -2.3250, 1.2532, 0.2495, 0.5692],
+    "LEFT_GRIPPER": 0,
+    "RIGHT_GRIPPER": 0
+  },
+  "complete_conditions": [
+    {
+      "type": "TIME_BASED",
+      "duration": 300.0
+    }
+  ],
+  "runtime": {
+    "publish_hz": 30.0,
+    "warming_up_time": 3.0,
+    "min_run_time_before_complete": 5.0,
+    "reset_steps": 100,
+    "reset_duration": 2.0,
+    "state_wait_timeout": 5.0
+  }
+}
